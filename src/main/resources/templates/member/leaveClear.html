@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout::main(
+        ~{::title},                 <!--/* title */-->
+        <!--/*--------------------------*/-->
+        <!--/*외부파일로 정의시 ex) link css */-->
+        ~{},                        <!--/* styles */-->
+        ~{},                        <!--/* scripts */-->
+        <!--/*내부태그로 정의시*/-->
+        ~{},                        <!--/* style */-->
+        ~{},                        <!--/* script */-->
+        <!--/*--------------------------*/-->
+        ~{::.upperHeader},          <!--/* upperHeader */-->
+        ~{::.nav},          <!--/* nav */-->
+        ~{::main},                  <!--/* main */-->
+        _                          <!--/* footer default*/-->
+      )}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>울산한마당 | 탈퇴완료</title>
+</head>
+
+<body>
+<div id="wrapper">
+  <div class="upperHeader">
+    <th:block th:replace="~{layout/upperHeader::upperHeaders}"></th:block>
+  </div>
+  <div class="nav">
+    <th:block th:replace="~{layout/nav::lowerHeader}"></th:block>
+  </div>
+
+
+  <!-- ======================================================================================================            -->
+  <main id="leaveClearMain">
+    <div class="container">
+      <div class="info__title">
+        <h2 id="title">회원 탈퇴</h2>
+      </div>
+
+      <div class="info__state">
+        <h3 id="state">회원 탈퇴</h3>
+      </div>
+
+
+      <div class="center__container">
+        <div class="container__div">
+          <span class="common leaveClear__title">회원 탈퇴 화면</span>
+          <div class="common leaveClear__box">
+            <h2>탈퇴완료</h2>
+            <!--  새 안내문구 + 홈 화면 돌아가는 버튼          -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- ======================================================================================================            -->
+
+
+</div>
+</body>
+</html>

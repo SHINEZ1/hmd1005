@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/layout::main(
+        ~{::title},                 <!--/* title */-->
+        <!--/*--------------------------*/-->
+        <!--/*외부파일로 정의시 ex) link css */-->
+        ~{},                        <!--/* styles */-->
+        ~{},                        <!--/* scripts */-->
+        <!--/*내부태그로 정의시*/-->
+        ~{},                        <!--/* style */-->
+        ~{},                        <!--/* script */-->
+        <!--/*--------------------------*/-->
+        ~{::.upperHeader},          <!--/* upperHeader */-->
+        ~{::.nav},          <!--/* nav */-->
+        ~{::main},                  <!--/* main */-->
+        _                          <!--/* footer default*/-->
+      )}">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="울산 문화 정보 사이트 메인 화면 기본 문서">
+  <meta name="keywords" content="울산,ulsan,information,홍보,advertisement,이벤트,event">
+  <meta name="author" content="KH java 할수있조">
+  <title>울산한마당 | 회원탈퇴</title>
+
+</head>
+<body>
+<div id="wrapper">
+  <div class="upperHeader">
+    <th:block th:replace="~{layout/upperHeader::upperHeaders}"></th:block>
+  </div>
+  <div class="nav">
+    <th:block th:replace="~{layout/nav::lowerHeader}"></th:block>
+  </div>
+  <!-- =========================================================================================== -->
+
+  <main id="myInfoMain">
+    <div class="container">
+      <div class="info__title">
+        <h2 id="title">내 정보</h2>
+      </div>
+
+      <div class="info__state">
+        <h3 id="state">회원 탈퇴</h3>
+      </div>
+
+      <div class="center__container">
+        <div class="container__div">
+          <span class="common leave__title">회원 탈퇴 확인</span>
+          <span class="common leave__sub">회원 탈퇴를 희망하신다면 아이디와 비밀번호를 입력하여 확인해주십시오</span>
+          <div class="common leave__box">
+            <!-- form -->
+            <form th:action="@{/members/leave}" class="box" method="post" th:object="${leaveForm}">
+              <div class="input__pwd">
+                <label for="leave_email">아이디 입력 </label>
+                <input type="text" id="leave_email" th:field="*{email}">
+              </div>
+              <ul th:if="${#fields.hasErrors('email')}" th:class="errmsg">
+                <li th:each="err : ${#fields.errors('email')}" th:text="|${errStat.count}.${err}|" />
+              </ul>
+
+              <div class="input__pwd">
+                <label for="leave_pwd">비밀번호 입력 </label>
+                <input type="text" id="leave_pwd" th:field="*{password}">
+              </div>
+              <ul th:if="${#fields.hasErrors('password')}" th:class="errmsg">
+                <li th:each="err : ${#fields.errors('password')}" th:text="|${errStat.count}.${err}|" />
+              </ul>
+
+              <div class="btn__box">
+                <button class="btn btn_confirm">탈퇴</button>
+                <button class="btn btn_back"><a  th:href="@{/members/{email}/info(email=${s_email})}">돌아가기</a></button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+</div>
+
+</body>
+</html>
